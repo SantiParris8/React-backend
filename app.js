@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
 
 app.get('/recipe/:recipekey/like/:review', function (req, res) {
   let recipe = findRecipe(req.params.recipekey);
-  recipe.likes = (recipe.likes + parseInt(req.params.review)) / 2
+  recipe.likes = ((recipe.likes + parseInt(req.params.review)) / 2).toFixed([1])
 });
 
 
