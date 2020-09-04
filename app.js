@@ -12,7 +12,7 @@ app.use(function (req, res, next) {
 
 app.get('/recipe/:recipekey/like/:review', function (req, res) {
   let recipe = findRecipe(req.params.recipekey);
-  recipe.likes = ((recipe.likes + parseInt(req.params.review)) / 2).toFixed([1])
+  recipe.likes = ((parseInt(recipe.likes) + parseInt(req.params.review)) / 2).toFixed([1])
 });
 
 
@@ -20,7 +20,7 @@ app.get('/recipe/:recipekey', function (req, res) {
   let recipe = findRecipe(req.params.recipekey);
 
   if (!recipe) {
-    let newRecipe = { id: req.params.recipekey, likes: 5 }
+    let newRecipe = { id: req.params.recipekey, likes: 5.0 }
     recetas.push(newRecipe);
     return res.json(newRecipe);
   }
